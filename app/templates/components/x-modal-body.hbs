@@ -1,0 +1,20 @@
+{{#with
+  (component
+    'x-button-list'
+    onCancel=onCancel
+    onConfirm=onConfirm)
+  as |button-list|
+}}
+  <p align="center">
+    {{#if body}}
+      {{body}}
+
+      {{component button-list}}
+    {{else}}
+      {{yield
+        (hash
+          buttons=(component button-list)
+        )}}
+    {{/if}}
+  </p>
+{{/with}}

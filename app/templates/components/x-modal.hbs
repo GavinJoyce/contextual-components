@@ -1,0 +1,31 @@
+<div class="modal">
+  {{#if title}}
+    {{x-modal-header
+      title=title
+    }}
+  {{else}}
+    {{yield
+      (hash
+        header=(component 'x-modal-header')
+      )
+    }}
+  {{/if}}
+
+  <div class="body-container">
+    {{#if body}}
+
+      {{x-modal-body
+        body=body
+        onConfirm=onConfirm
+        onCancel=onCancel
+      }}
+    {{else}}
+      {{yield
+        (hash
+          body=(component 'x-modal-body')
+        )
+      }}
+    {{/if}}
+  </div>
+
+</div>

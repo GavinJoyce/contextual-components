@@ -1,0 +1,57 @@
+<h3>contextual components</h3>
+
+{{x-modal
+  title="Simplest"
+  body="Hello there"
+  onConfirm=(action 'log' 'confirmed!')
+  onCancel=(action 'log' 'cancelled!')
+}}
+
+<hr />
+
+{{x-modal
+  title="Simplest (no buttons)"
+  body="Hello there"
+}}
+
+<hr />
+
+{{#x-modal title="Second Simplest" as |modal|}}
+  {{#modal.body as |body|}}
+    <h1>I'm the body..</h1>
+
+    {{body.buttons
+      onConfirm=(action 'log' 'confirm!')
+      onCancel=(action 'log' 'cancel!')
+    }}
+
+    {{#body.buttons as |buttons|}}
+      hello
+      {{buttons.button label='button1' type='destructive' onClick=(action 'log' 'button1!')}}
+      {{buttons.button label='button2' type='positive' onClick=(action 'log' 'button2!')}}
+    {{/body.buttons}}
+
+    {{#body.buttons as |buttons|}}
+      {{buttons.button label='button1' type='destructive' onClick=(action 'log' 'button1!')}}
+      {{buttons.button label='button2' type='positive' onClick=(action 'log' 'button2!')}}
+    {{/body.buttons}}
+
+  {{/modal.body}}
+{{/x-modal}}
+
+<hr />
+
+{{#x-modal as |modal|}}
+  {{#modal.header}}
+    I'm the <b>header</b>
+  {{/modal.header}}
+
+  {{#modal.body}}
+    <h1>I'm the body..</h1>
+  {{/modal.body}}
+{{/x-modal}}
+
+<hr />
+
+
+{{sample-modal-markup}}

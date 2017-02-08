@@ -1,0 +1,17 @@
+
+{{#if onConfirm}}
+
+  {{#if onCancel}}
+    {{x-button label='Cancel' onClick=onCancel}}
+  {{/if}}
+  {{#if onConfirm}}
+    {{x-button label='Confirm' type='positive' onClick=onConfirm}}
+  {{/if}}
+
+{{else}}
+  {{yield
+    (hash
+      button=(component 'x-button')
+    )
+  }}
+{{/if}}
